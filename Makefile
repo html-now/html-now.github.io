@@ -33,9 +33,9 @@ export TAIL
 getDaysBeforeToday=bash -c '\
   date --date="" > /dev/null 2>&1 || hasGnuDate=$$?; \
   if [ "$$hasGnuDate" != 1 ]; then \
-    days=$$((($$(date +"%s") - $$(date -u --date="$$1" +"%s"))/86400)); \
+    days=$$((($$(date -u +"%s") - $$(date -u --date="$$1" +"%s"))/86400)); \
   else \
-    days=$$((($$(date +"%s") - $$(date -jf "%a, %d %b %Y %H:%M:%S GMT" "$$1" +"%s"))/86400)); \
+    days=$$((($$(date -u +"%s") - $$(date -u -jf "%a, %d %b %Y %H:%M:%S GMT" "$$1" +"%s"))/86400)); \
   fi; \
   echo "$$days"' getDaysBeforeToday
 ifneq (,$(filter n,$(MAKEFLAGS)))
@@ -45,9 +45,9 @@ endif
 getDaysBeforeTodayISO8601=bash -c '\
   date --date="" > /dev/null 2>&1 || hasGnuDate=$$?; \
   if [ "$$hasGnuDate" != 1 ]; then \
-    days=$$((($$(date +"%s") - $$(date -u --date="$$1" +"%s"))/86400)); \
+    days=$$((($$(date -u +"%s") - $$(date -u --date="$$1" +"%s"))/86400)); \
   else \
-    days=$$((($$(date +"%s") - $$(date -jf "%Y-%m-%dT%H:%M:%SZ" "$$1" +"%s"))/86400)); \
+    days=$$((($$(date -u +"%s") - $$(date -u -jf "%Y-%m-%dT%H:%M:%SZ" "$$1" +"%s"))/86400)); \
   fi; \
   echo "$$days"' getDaysBeforeTodayISO8601
 ifneq (,$(filter n,$(MAKEFLAGS)))
