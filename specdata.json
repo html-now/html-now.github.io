@@ -1614,64 +1614,31 @@
     "spec_category": "HTTP and addressing"
   },
   {
-    "spec_url": "https://httpwg.org/specs/rfc7230.html",
-    "spec_name": "HTTP Message Syntax and Routing",
+    "spec_url": "https://httpwg.org/specs/rfc9110.html",
+    "spec_name": "HTTP Semantics",
     "repo_url": "https://github.com/httpwg/httpwg.github.io/",
     "mdn_url": "https://developer.mozilla.org/en-US/docs/Web/HTTP",
     "engines": ["webkit", "gecko", "blink"],
     "spec_category": "HTTP and addressing"
   },
   {
-    "spec_url": "https://httpwg.org/specs/rfc7231.html",
-    "spec_name": "HTTP Semantics and Content",
-    "repo_url": "https://github.com/httpwg/httpwg.github.io/",
-    "mdn_url": "https://developer.mozilla.org/en-US/docs/Web/HTTP",
-    "engines": ["webkit", "gecko", "blink"],
-    "spec_category": "HTTP and addressing"
-  },
-  {
-    "spec_url": "https://httpwg.org/specs/rfc7232.html",
-    "spec_name": "HTTP Conditional Requests",
-    "repo_url": "https://github.com/httpwg/httpwg.github.io/",
-    "mdn_url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Conditional_requests",
-    "engines": ["webkit", "gecko", "blink"],
-    "spec_category": "HTTP and addressing"
-  },
-  {
-    "spec_url": "https://httpwg.org/specs/rfc7233.html",
-    "spec_name": "HTTP Range Requests",
-    "repo_url": "https://github.com/httpwg/httpwg.github.io/",
-    "mdn_url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests",
-    "engines": ["webkit", "gecko", "blink"],
-    "spec_category": "HTTP and addressing"
-  },
-  {
-    "spec_url": "https://httpwg.org/specs/rfc7234.html",
+    "spec_url": "https://httpwg.org/specs/rfc9111.html",
     "spec_name": "HTTP Caching",
     "repo_url": "https://github.com/httpwg/httpwg.github.io/",
-    "mdn_url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching",
+    "mdn_url": "https://developer.mozilla.org/en-US/docs/Web/HTTP",
     "engines": ["webkit", "gecko", "blink"],
     "spec_category": "HTTP and addressing"
   },
   {
-    "spec_url": "https://httpwg.org/specs/rfc7235.html",
-    "spec_name": "HTTP Authentication",
+    "spec_url": "https://httpwg.org/specs/rfc9112.html",
+    "spec_name": "HTTP/1.1",
     "repo_url": "https://github.com/httpwg/httpwg.github.io/",
-    "mdn_url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication",
-    "engines": ["webkit", "gecko", "blink"],
-    "spec_category": "Security"
-  },
-  {
-    "spec_url": "https://httpwg.org/specs/rfc7538.html",
-    "spec_name": "HTTP Status Code 308",
-    "repo_url": "https://github.com/httpwg/httpwg.github.io/",
-    "mdn_url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/308",
-    "caniuse_url": "https://caniuse.com/mdn-http_status_308",
+    "mdn_url": "https://developer.mozilla.org/en-US/docs/Web/HTTP",
     "engines": ["webkit", "gecko", "blink"],
     "spec_category": "HTTP and addressing"
   },
   {
-    "spec_url": "https://httpwg.org/specs/rfc7540.html",
+    "spec_url": "https://httpwg.org/specs/rfc9113.html",
     "spec_name": "HTTP/2",
     "repo_url": "https://github.com/httpwg/httpwg.github.io/",
     "mdn_url": "https://developer.mozilla.org/en-US/docs/Glossary/HTTP_2",
