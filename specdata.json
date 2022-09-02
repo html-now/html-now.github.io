@@ -1607,7 +1607,7 @@
   },
   {
     "spec_url": "https://httpwg.org/specs/rfc6266.html",
-    "spec_name": "Content-Disposition header",
+    "spec_name": "HTTP Content-Disposition header",
     "repo_url": "https://github.com/httpwg/httpwg.github.io/",
     "mdn_url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition",
     "caniuse_url": "https://caniuse.com/mdn-http_headers_content-disposition",
@@ -1632,7 +1632,7 @@
   },
   {
     "spec_url": "https://httpwg.org/specs/rfc9112.html",
-    "spec_name": "HTTP/1.1",
+    "spec_name": "HTTP/1.1 (Syntax)",
     "repo_url": "https://github.com/httpwg/httpwg.github.io/",
     "mdn_url": "https://developer.mozilla.org/en-US/docs/Web/HTTP",
     "engines": ["webkit", "gecko", "blink"],
@@ -1640,20 +1640,11 @@
   },
   {
     "spec_url": "https://httpwg.org/specs/rfc9113.html",
-    "spec_name": "HTTP/2",
+    "spec_name": "HTTP/2 (Syntax)",
     "repo_url": "https://github.com/httpwg/httpwg.github.io/",
     "mdn_url": "https://developer.mozilla.org/en-US/docs/Glossary/HTTP_2",
     "caniuse_url": "https://caniuse.com/http2",
     "tests_url": "https://github.com/http2/http2-test",
-    "engines": ["webkit", "gecko", "blink"],
-    "spec_category": "HTTP and addressing"
-  },
-  {
-    "spec_url": "https://httpwg.org/specs/rfc7725.html",
-    "spec_name": "HTTP Status Code 451",
-    "repo_url": "https://github.com/httpwg/httpwg.github.io/",
-    "mdn_url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/451",
-    "caniuse_url": "https://caniuse.com/mdn-http_status_451",
     "engines": ["webkit", "gecko", "blink"],
     "spec_category": "HTTP and addressing"
   },
@@ -1673,15 +1664,6 @@
     "mdn_url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control",
     "caniuse_url": "https://caniuse.com/mdn-http_headers_cache-control_immutable",
     "engines": ["webkit", "gecko"],
-    "spec_category": "HTTP and addressing"
-  },
-  {
-    "spec_url": "https://httpwg.org/specs/rfc8470.html",
-    "spec_name": "Using Early Data in HTTP",
-    "repo_url": "https://github.com/httpwg/httpwg.github.io/",
-    "mdn_url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Early-Data",
-    "caniuse_url": "https://caniuse.com/mdn-http_headers_early-data",
-    "engines": ["gecko"],
     "spec_category": "HTTP and addressing"
   },
   {
@@ -1724,14 +1706,6 @@
     "mdn_url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Client_hints",
     "engines": ["blink"],
     "spec_category": "HTTP and addressing"
-  },
-  {
-    "spec_url": "https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-expect-ct-08",
-    "spec_name": "Expect-CT header",
-    "mdn_url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Expect-CT",
-    "caniuse_url": "https://caniuse.com/mdn-http_headers_expect-ct",
-    "engines": ["blink"],
-    "spec_category": "Security"
   },
   {
     "spec_url": "https://sourcemaps.info/spec.html",
