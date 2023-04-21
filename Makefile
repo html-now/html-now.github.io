@@ -71,6 +71,7 @@ index.html: specdata.json
 		testsImage=images/WPT.png; \
 		specName=$$(jq -r ".[] | select(.spec_url==\"$$specURL\").spec_name" $<.tmp); \
 		printf "$$specName\n"; \
+		echo $(CURL) -fsSL -I $$specURL; \
 		headers=$$($(CURL) -fsSL -I $$specURL); \
 		lastUpdated=$$(echo "$$headers" | grep -i 'last-revised' | cut -d ":" -f2- | xargs | tr -d "\r\n"); \
 		if [[ -z "$$lastUpdated" ]]; then \
@@ -133,9 +134,9 @@ index.html: specdata.json
 		elif [[ $$specURL == *"wicg.github.io"* ]]; then \
 			image="images/WICG.png"; \
 			orgLink="https://wicg.io/"; \
-		elif [[ $$specURL == *"drafts.csswg.org"* ]]; then \
+		elif [[ $$specURL == *"csswg-drafts"* ]]; then \
 			image="images/CSSWG.png"; \
-			orgLink="https://drafts.csswg.org/"; \
+			orgLink="https://w3c.github.io/csswg-drafts/"; \
 		elif [[ $$specURL == *"drafts.fxtf.org"* ]]; then \
 			image="images/CSSWG.png"; \
 			orgLink="https://drafts.fxtf.org/"; \
