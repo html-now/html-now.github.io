@@ -67,15 +67,17 @@ getDaysBeforeTodayISO8601=: getDaysBeforeTodayISO8601
 endif
 all: index.html
 
-timestamps.json:
-	$(CURL) -fsSL "https://w3c.github.io/csswg-drafts/timestamps.json" > timestamps.json
+css-timestamps.json:
+	$(CURL) -fsSL "https://w3c.github.io/csswg-drafts/timestamps.json" > css-timestamps.json
 
-index.html: specdata.json
+index.html: specdata.json css-timestamps.json
 	eval "$$HEAD"
 	eval "$$FUNCTIONS"
+	printf "{" > lastupdated.json
 	jq 'sort_by(.spec_name | ascii_downcase)' $< > $<.tmp; \
 	$(CURL) -fsSL "https://w3c.github.io/mdn-spec-links/SPECMAP.json" > SPECMAP.json; \
 	for specURL in $$(jq -r ".[].spec_url" $<.tmp); do \
+		let "count++"; \
 		title=""; \
 		inWebKit="no"; \
 		inGecko="no"; \
@@ -95,6 +97,8 @@ index.html: specdata.json
 		fi; \
 		if [[ -n "$$lastUpdated" ]]; then \
 			lastUpdatedDaysAgo=$$(${getDaysBeforeToday} "$$lastUpdated"); \
+		else \
+			lastUpdatedDaysAgo="null"; \
 		fi; \
 		if [ $$specURL = "https://github.com/tc39/proposal-regexp-legacy-features/" ]; then \
 			response=$$($(CURL) -fsSL "https://api.github.com/repos/tc39/proposal-regexp-legacy-features/commits?path=README.md&page=1&per_page=1"); \
@@ -104,9 +108,13 @@ index.html: specdata.json
 		if [[ $$specURL == "https://w3c.github.io/csswg-drafts"* ]]; then \
 			shortName=$${specURL:35}; \
 			shortName=$${shortName/%?/}; \
-			lastUpdatedTimestamp=$$(jq -r ".[\"$$shortName\"]" timestamps.json); \
+			lastUpdatedTimestamp=$$(jq -r ".[\"$$shortName\"]" css-timestamps.json); \
 			lastUpdatedDaysAgo=$$(${getDaysBeforeTodayFromTimestamp} "$$lastUpdatedTimestamp"); \
 		fi; \
+		if [[ $$count != 1 ]]; then \
+			printf "," >> lastupdated.json; \
+		fi; \
+		printf "\n  \"%s\": %s" $$specURL $$lastUpdatedDaysAgo >> lastupdated.json; \
 		mdnURL=$$(jq -r ".[] | select(.spec_url==\"$$specURL\").mdn_url" $<.tmp); \
 		repoURL=$$(jq -r ".[] | select(.spec_url==\"$$specURL\").repo_url" $<.tmp); \
 		caniuseURL=$$(jq -r ".[] | select(.spec_url==\"$$specURL\").caniuse_url" $<.tmp); \
@@ -210,7 +218,7 @@ index.html: specdata.json
 		if [[ $$lastUpdatedDaysAgo -lt 100 ]]; then \
 			lastUpdatedClass="green"; \
 		fi; \
-		if [[ -n "$$lastUpdatedDaysAgo" ]]; then \
+		if [[ -n "$$lastUpdatedDaysAgo" && "$$lastUpdatedDaysAgo" != "null" ]]; then \
 			title="(last updated $$lastUpdatedDaysAgo $$days ago)"; \
 		fi; \
 		if [[ -n "$$repoURL" && "$$repoURL" != null ]]; then \
@@ -218,7 +226,7 @@ index.html: specdata.json
 		else \
 			printf "<img class=\"no\" src=\"images/GitHub.png\" alt=\"No GitHub repo\"></a>" >> $@; \
 		fi; \
-		if [[ -n "$$lastUpdatedDaysAgo" ]]; then \
+		if [[ -n "$$lastUpdatedDaysAgo" && "$$lastUpdatedDaysAgo" != "null" ]]; then \
 			if [[ -n "$$repoURL" && "$$repoURL" != null ]]; then \
 				printf "<em class=\"$$lastUpdatedClass\"><a href=\"$$repoURL\" title=\"$$repoURL $$title\">$$lastUpdatedDaysAgo</a></em>" >> $@; \
 			else \
@@ -283,9 +291,11 @@ index.html: specdata.json
 		printf "<td><u class="$$specClass" title=\"Click to show &#x201c;$$specCategory&#x201d; features only.\">$$specCategory</u>\n" >> $@; \
 	done
 	eval "$$TAIL"
+	printf "\n}\n" >> lastupdated.json
+	$$(jq --sort-keys . lastupdated.json | sponge lastupdated.json)
 	$(RM) SPECMAP.json
 	$(RM) $<.tmp
 
 clean:
-	$(RM) timestamps.json
+	$(RM) css-timestamps.json
 	$(RM) index.html
