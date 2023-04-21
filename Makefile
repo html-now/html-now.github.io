@@ -42,6 +42,18 @@ ifneq (,$(filter n,$(MAKEFLAGS)))
 getDaysBeforeToday=: getDaysBeforeToday
 endif
 
+getDaysBeforeTodayFromTimestamp=bash -c '\
+  date --date="" > /dev/null 2>&1 || hasGnuDate=$$?; \
+  if [ "$$hasGnuDate" != 1 ]; then \
+    days=$$((($$(date -u +"%s") - $$1)/86400)); \
+  else \
+    days=$$((($$(date -u +"%s") - $$1)/86400)); \
+  fi; \
+  echo "$$days"' getDaysBeforeTodayFromTimestamp
+ifneq (,$(filter n,$(MAKEFLAGS)))
+getDaysBeforeTodayFromTimestamp=: getDaysBeforeTodayFromTimestamp
+endif
+
 getDaysBeforeTodayISO8601=bash -c '\
   date --date="" > /dev/null 2>&1 || hasGnuDate=$$?; \
   if [ "$$hasGnuDate" != 1 ]; then \
@@ -54,6 +66,9 @@ ifneq (,$(filter n,$(MAKEFLAGS)))
 getDaysBeforeTodayISO8601=: getDaysBeforeTodayISO8601
 endif
 all: index.html
+
+timestamps.json:
+	$(CURL) -fsSL "https://w3c.github.io/csswg-drafts/timestamps.json" > timestamps.json
 
 index.html: specdata.json
 	eval "$$HEAD"
@@ -70,6 +85,7 @@ index.html: specdata.json
 		lastUpdatedClass="red"; \
 		testsImage=images/WPT.png; \
 		specName=$$(jq -r ".[] | select(.spec_url==\"$$specURL\").spec_name" $<.tmp); \
+		echo; \
 		printf "$$specName\n"; \
 		echo $(CURL) -fsSL -I $$specURL; \
 		headers=$$($(CURL) -fsSL -I $$specURL); \
@@ -84,6 +100,12 @@ index.html: specdata.json
 			response=$$($(CURL) -fsSL "https://api.github.com/repos/tc39/proposal-regexp-legacy-features/commits?path=README.md&page=1&per_page=1"); \
 			lastUpdated=$$(echo $$response | jq -r '.[0].commit.committer.date'); \
 			lastUpdatedDaysAgo=$$(${getDaysBeforeTodayISO8601} "$$lastUpdated"); \
+		fi; \
+		if [[ $$specURL == "https://w3c.github.io/csswg-drafts"* ]]; then \
+			shortName=$${specURL:35}; \
+			shortName=$${shortName/%?/}; \
+			lastUpdatedTimestamp=$$(jq -r ".[\"$$shortName\"]" timestamps.json); \
+			lastUpdatedDaysAgo=$$(${getDaysBeforeTodayFromTimestamp} "$$lastUpdatedTimestamp"); \
 		fi; \
 		mdnURL=$$(jq -r ".[] | select(.spec_url==\"$$specURL\").mdn_url" $<.tmp); \
 		repoURL=$$(jq -r ".[] | select(.spec_url==\"$$specURL\").repo_url" $<.tmp); \
@@ -265,4 +287,5 @@ index.html: specdata.json
 	$(RM) $<.tmp
 
 clean:
+	$(RM) timestamps.json
 	$(RM) index.html
