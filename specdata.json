@@ -2466,9 +2466,9 @@
     "spec_category": "Security"
   },
   {
-    "spec_url": "https://w3c.github.io/webappsec-trusted-types/dist/spec/",
+    "spec_url": "https://w3c.github.io/trusted-types/dist/spec/",
     "spec_name": "Trusted Types",
-    "repo_url": "https://github.com/w3c/webappsec-trusted-types/dist/spec/",
+    "repo_url": "https://github.com/w3c/trusted-types/",
     "mdn_url": "https://developer.mozilla.org/en-US/docs/Web/API/Trusted_Types_API",
     "caniuse_url": "https://caniuse.com/trusted-types",
     "tests_url": "https://wpt.fyi/results/trusted-types",
