@@ -292,7 +292,8 @@ index.html: specdata.json css-timestamps.json
 	done
 	eval "$$TAIL"
 	printf "\n}\n" >> lastupdated.json
-	$$(jq --sort-keys . lastupdated.json | sponge lastupdated.json)
+	jq --sort-keys . lastupdated.json > lastupdated.json.tmp \
+		&& mv lastupdated.json.tmp lastupdated.json
 	$(RM) SPECMAP.json
 	$(RM) $<.tmp
 
