@@ -90,20 +90,21 @@ index.html: specdata.json css-timestamps.json
 		echo; \
 		printf "$$specName\n"; \
 		echo $(CURL) -fsSL -I $$specURL; \
-		headers=$$($(CURL) -fsSL -I $$specURL); \
-		lastUpdated=$$(echo "$$headers" | grep -i 'last-revised' | cut -d ":" -f2- | xargs | tr -d "\r\n"); \
-		if [[ -z "$$lastUpdated" ]]; then \
-			lastUpdated=$$(echo "$$headers" | grep -i 'last-modified' | cut -d ":" -f2- | xargs | tr -d "\r\n"); \
-		fi; \
-		if [[ -n "$$lastUpdated" ]]; then \
-			lastUpdatedDaysAgo=$$(${getDaysBeforeToday} "$$lastUpdated"); \
-		else \
-			lastUpdatedDaysAgo="null"; \
-		fi; \
 		if [ $$specURL = "https://github.com/tc39/proposal-regexp-legacy-features/" ]; then \
 			response=$$($(CURL) -fsSL "https://api.github.com/repos/tc39/proposal-regexp-legacy-features/commits?path=README.md&page=1&per_page=1"); \
 			lastUpdated=$$(echo $$response | jq -r '.[0].commit.committer.date'); \
 			lastUpdatedDaysAgo=$$(${getDaysBeforeTodayISO8601} "$$lastUpdated"); \
+		else \
+			headers=$$($(CURL) -fsSL -I $$specURL); \
+			lastUpdated=$$(echo "$$headers" | grep -i 'last-revised' | cut -d ":" -f2- | xargs | tr -d "\r\n"); \
+			if [[ -z "$$lastUpdated" ]]; then \
+				lastUpdated=$$(echo "$$headers" | grep -i 'last-modified' | cut -d ":" -f2- | xargs | tr -d "\r\n"); \
+			fi; \
+			if [[ -n "$$lastUpdated" ]]; then \
+				lastUpdatedDaysAgo=$$(${getDaysBeforeToday} "$$lastUpdated"); \
+			else \
+				lastUpdatedDaysAgo="null"; \
+			fi; \
 		fi; \
 		if [[ $$specURL == "https://drafts.csswg.org"* ]]; then \
 			shortName=$${specURL:25}; \
