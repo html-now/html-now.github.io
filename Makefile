@@ -105,8 +105,8 @@ index.html: specdata.json css-timestamps.json
 			lastUpdated=$$(echo $$response | jq -r '.[0].commit.committer.date'); \
 			lastUpdatedDaysAgo=$$(${getDaysBeforeTodayISO8601} "$$lastUpdated"); \
 		fi; \
-		if [[ $$specURL == "https://w3c.github.io/csswg-drafts"* ]]; then \
-			shortName=$${specURL:35}; \
+		if [[ $$specURL == "https://drafts.csswg.org"* ]]; then \
+			shortName=$${specURL:25}; \
 			shortName=$${shortName/%?/}; \
 			lastUpdatedTimestamp=$$(jq -r ".[\"$$shortName\"]" css-timestamps.json); \
 			lastUpdatedDaysAgo=$$(${getDaysBeforeTodayFromTimestamp} "$$lastUpdatedTimestamp"); \
@@ -164,9 +164,9 @@ index.html: specdata.json css-timestamps.json
 		elif [[ $$specURL == *"wicg.github.io"* ]]; then \
 			image="images/WICG.png"; \
 			orgLink="https://wicg.io/"; \
-		elif [[ $$specURL == *"csswg-drafts"* ]]; then \
+		elif [[ $$specURL == *"drafts.csswg.org"* ]]; then \
 			image="images/CSSWG.png"; \
-			orgLink="https://w3c.github.io/csswg-drafts/"; \
+			orgLink="https://drafts.csswg.org/"; \
 		elif [[ $$specURL == *"drafts.fxtf.org"* ]]; then \
 			image="images/CSSWG.png"; \
 			orgLink="https://drafts.fxtf.org/"; \
