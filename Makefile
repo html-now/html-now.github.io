@@ -153,6 +153,9 @@ index.html: specdata.json css-timestamps.json
 			image="images/TC39.png"; \
 			testsImage=images/Test262.png; \
 			orgLink="https://tc39.es/"; \
+		elif [[ $$specURL == *"gpuweb"* ]]; then \
+			image="images/WebGPU.png"; \
+			orgLink="http://webgpu.io/"; \
 		elif [[ $$specURL == *"khronos.org"* ]]; then \
 			image="images/Khronos.png"; \
 			orgLink="https://registry.khronos.org/webgl/"; \

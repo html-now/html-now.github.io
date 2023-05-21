@@ -2527,6 +2527,16 @@
     "spec_category": "Utilities"
   },
   {
+    "spec_url": "https://gpuweb.github.io/gpuweb/",
+    "spec_name": "WebGPU",
+    "repo_url": "https://github.com/gpuweb/",
+    "mdn_url": "https://developer.mozilla.org/en-US/docs/Web/API/WebGPU_API",
+    "caniuse_url": "https://caniuse.com/webgpu",
+    "tests_url": "https://gpuweb.github.io/cts/",
+    "engines": ["gecko", "blink"],
+    "spec_category": "Graphics and typography"
+  },
+  {
     "spec_url": "https://w3c.github.io/webrtc-extensions/",
     "spec_name": "WebRTC Extensions",
     "repo_url": "https://github.com/w3c/webrtc-extensions/",
