@@ -9,7 +9,7 @@ cat << EOF > $@
 <link rel=stylesheet href="style.css">
 <div id=main>
 <h1>The Web Platform: Browser technologies</h1>
-<p><button>Include single-engine features</button> <span>To re-sort, click on any heading.</span>
+<p><button>Include single-engine specifications</button> • <b></b> <span>To re-sort, click on any heading.</span>
 <table class=sortable>
 <thead><tr><th><th>Spec<th>Repo<th>Docs<th>Tests<th><th><th>Engines<th>Category
 <tbody>
@@ -260,19 +260,19 @@ index.html: specdata.json css-timestamps.json
 		printf "<td>" >> $@; \
 		if [[ $$enginesCount -eq 0 ]]; then \
 			shortEnginesStatement="no conforming implementations"; \
-			enginesStatement="This feature has $$shortEnginesStatement."; \
+			enginesStatement="This specification has $$shortEnginesStatement."; \
 			statusIndicatorElement="<s title=\"$$enginesStatement\">⚠</s> "; \
 		elif [[ $$enginesCount -eq 1 ]]; then \
 			shortEnginesStatement="$${enginesArray[0]} only"; \
-			enginesStatement="This feature is in $$shortEnginesStatement."; \
+			enginesStatement="This specification is implemented in $$shortEnginesStatement."; \
 			statusIndicatorElement="<s title=\"$$enginesStatement\">⚠</s> "; \
 		elif [[ $$enginesCount -eq 2 ]]; then \
 			shortEnginesStatement="$${enginesArray[0]} and $${enginesArray[1]} only"; \
-			enginesStatement="This feature is in $$shortEnginesStatement."; \
+			enginesStatement="This specification is implemented in $$shortEnginesStatement."; \
 			statusIndicatorElement="<b title=\"$$enginesStatement\">✔</b><span>two</span>"; \
 		elif [[ $$enginesCount -gt 2 ]]; then \
 			shortEnginesStatement="in all engines"; \
-			enginesStatement="This feature is $$shortEnginesStatement."; \
+			enginesStatement="This specification is implemented in $$shortEnginesStatement."; \
 			statusIndicatorElement="<i title=\"$$enginesStatement\">✔</i><span>all</span>"; \
 		fi; \
 		if [[ -n "$$caniuseURL" && "$$caniuseURL" != null ]]; then \
@@ -289,7 +289,7 @@ index.html: specdata.json css-timestamps.json
 		printf " <a href=\"https://webkit.org/status/\" title=\"https://webkit.org/status/\"><img class=\"$$inWebKit\" src=\"images/WebKit.png\" alt=\"WebKit: $$inWebKit\"></a>" >> $@; \
 		printf " <a href=\"https://chromestatus.com/features\" title=\"https://chromestatus.com/features\"><img class=\"$$inBlink\" src=\"images/Blink.png\" alt=\"Blink: $$inBlink\"></a>" >> $@; \
 		printf "<span>$$inGecko $$inWebKit $$inBlink</span>" >> $@; \
-		printf "<td><u class="$$specClass" title=\"Click to show &#x201c;$$specCategory&#x201d; features only.\">$$specCategory</u>\n" >> $@; \
+		printf "<td><u class="$$specClass" title=\"Click to toggle between showing &#x201c;$$specCategory&#x201d; specs only, or showing all specs.\">$$specCategory</u>\n" >> $@; \
 	done
 	eval "$$TAIL"
 	printf "\n}\n" >> lastupdated.json

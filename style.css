@@ -39,6 +39,8 @@ button {
   font-size: 12px;
 }
 
+p b { font-style: normal; font-weight: normal; }
+
 p span { float: right; }
 
 #main {
