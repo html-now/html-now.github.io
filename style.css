@@ -67,7 +67,7 @@ a:hover, a:focus {
 
 img { margin-top: 1px; vertical-align: top; }
 
-table span { opacity: 0; font-size: 0px; }
+tbody span { opacity: 0; font-size: 0px; }
 table i { color: green; }
 table a b { color: #aaa; font-style: italic; }
 table s {
@@ -232,9 +232,15 @@ td, th {
   border-color: #dfe2e5;
   border-width: 0 0 0 1px;
 }
-th:nth-child(3) { writing-mode: vertical-lr; width: 22px; }
-th:nth-child(4) { writing-mode: vertical-lr; width: 22px; }
-th:nth-child(5) { writing-mode: vertical-lr; width: 22px; }
+th:nth-child(3) { width: 22px; }
+th:nth-child(4) { width: 22px; }
+th:nth-child(5) { width: 22px; }
+th:nth-child(3) span {
+  writing-mode: vertical-lr; float: left; letter-spacing: 1px; }
+th:nth-child(4) span {
+  writing-mode: vertical-lr; float: left; letter-spacing: 1px; }
+th:nth-child(5) span {
+  writing-mode: vertical-lr; float: left; letter-spacing: 1px; }
 th:nth-child(6) { text-align: right; width: 22px; }
 th:nth-child(7) { text-align: right; width: 22px; }
 th:nth-child(8) { text-align: right; width: 82px; }
