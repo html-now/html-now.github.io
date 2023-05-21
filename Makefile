@@ -11,7 +11,7 @@ cat << EOF > $@
 <h1>The Web Platform: Browser technologies</h1>
 <p><button>Include single-engine specifications</button> • <b></b> <span>To re-sort, click on any heading.</span>
 <table class=sortable>
-<thead><tr><th><th>Spec<th>Repo<th>Docs<th>Tests<th><th><th>Engines<th>Category
+<thead><tr><th><th>Specification<th>Repo<th>Docs<th>Tests<th><th><th>Engines<th>Category
 <tbody>
 EOF
 endef

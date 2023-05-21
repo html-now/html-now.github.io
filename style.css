@@ -19,7 +19,7 @@ h1 {
   margin-top: 4px;
   border: 1px dashed #ccc;
   margin-bottom: 8px;
-  width: 900px;
+  width: 825px;
 }
 
 p {
@@ -30,7 +30,7 @@ p {
   font-style: italic;
   font-size: 14px;
   color: #999;
-  width: 905px;
+  width: 830px;
 }
 
 button {
@@ -67,7 +67,6 @@ a:hover, a:focus {
 
 img { margin-top: 1px; vertical-align: top; }
 
-table { min-width: 915px; }
 table span { opacity: 0; font-size: 0px; }
 table i { color: green; }
 table a b { color: #aaa; font-style: italic; }
@@ -184,7 +183,7 @@ u.Realtimecommunication {
   font-weight: normal;
   text-align: left;
   text-transform: capitalize;
-  vertical-align: baseline;
+  vertical-align: bottom;
   white-space: nowrap;
 }
 
@@ -233,12 +232,12 @@ td, th {
   border-color: #dfe2e5;
   border-width: 0 0 0 1px;
 }
-th:nth-child(3) { text-align: right; }
-th:nth-child(4) { text-align: right; }
-th:nth-child(5) { text-align: right; }
-th:nth-child(6) { text-align: right; }
-th:nth-child(7) { text-align: right; }
-th:nth-child(8) { text-align: right; }
+th:nth-child(3) { writing-mode: vertical-lr; width: 22px; }
+th:nth-child(4) { writing-mode: vertical-lr; width: 22px; }
+th:nth-child(5) { writing-mode: vertical-lr; width: 22px; }
+th:nth-child(6) { text-align: right; width: 22px; }
+th:nth-child(7) { text-align: right; width: 22px; }
+th:nth-child(8) { text-align: right; width: 82px; }
 th:nth-child(9) { text-align: right; }
 
 td:nth-child(3) { text-align: right; }
