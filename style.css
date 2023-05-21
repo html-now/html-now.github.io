@@ -19,7 +19,7 @@ h1 {
   margin-top: 4px;
   border: 1px dashed #ccc;
   margin-bottom: 8px;
-  width: 894px;
+  width: 900px;
 }
 
 p {
@@ -30,8 +30,16 @@ p {
   font-style: italic;
   font-size: 14px;
   color: #999;
-  width: 899px;
+  width: 905px;
 }
+
+button {
+  cursor: pointer;
+  font-family: monospace;
+  font-size: 12px;
+}
+
+p span { float: right; }
 
 #main {
   padding: 20px;
@@ -211,6 +219,11 @@ u.Realtimecommunication {
   color: inherit;
   content: ' \025B4';
 }
+
+tr.hiddenFeatureGroup { display: none; }
+tr.hiddenSingleEngineFeature { display: none; }
+tr.visibleSingleEngineFeature { display: row; }
+
 tr { break-inside: avoid; page-break-inside: avoid; }
 tr { background: #ccc; }
 td, th {
@@ -232,11 +245,11 @@ td:nth-child(5) { text-align: right; }
 td:nth-child(6) { text-align: right; }
 td:nth-child(7) { text-align: right; }
 td:nth-child(8) { text-align: right; }
-td:nth-child(9) { text-align: right; }
+td:nth-child(9) { text-align: right; width: 145px; }
 th { padding: 8px 4px 8px 13px !important; }
 td { padding: 8px 13px 8px 13px !important; }
-td:first-child, th:first-child { border: 0 }
-td:nth-child(2) { text-align: left; }
+td:first-child, th:first-child { border: 0; width: 22px; }
+td:nth-child(2) { text-align: left; width: 286px; }
 td:nth-child(3), td:nth-child(4) { text-align: right; }
 td:nth-child(3) div, td:nth-child(4) div { position: relative; }
 td:nth-child(3) img, td:nth-child(4) img {

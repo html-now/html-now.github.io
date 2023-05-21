@@ -9,7 +9,7 @@ cat << EOF > $@
 <link rel=stylesheet href="style.css">
 <div id=main>
 <h1>The Web Platform: Browser technologies</h1>
-<p>To re-sort, click on any heading.
+<p><button>Include single-engine features</button> <span>To re-sort, click on any heading.</span>
 <table class=sortable>
 <thead><tr><th><th>Spec<th>Repo<th>Docs<th>Tests<th><th><th>Engines<th>Category
 <tbody>
