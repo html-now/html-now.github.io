@@ -12,19 +12,19 @@ jobs:
   build:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '19'
       - name: Run https://html-now.github.io/ build
         id: incoming
         run: |
           make -B
-      - uses: crazy-max/ghaction-import-gpg@v3
+      - uses: crazy-max/ghaction-import-gpg@v5
         with:
-          gpg-private-key: ${{ secrets.GPG_SIGNING_KEY }}
-          git-user-signingkey: true
-          git-commit-gpgsign: true
+          gpg_private_key: ${{ secrets.GPG_SIGNING_KEY }}
+          git_user_signingkey: true
+          git_commit_gpgsign: true
       - name: Create pull request
         id: cpr
         uses: peter-evans/create-pull-request@v3
