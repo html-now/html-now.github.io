@@ -27,7 +27,7 @@ jobs:
           git_commit_gpgsign: true
       - name: Create pull request
         id: cpr
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v5
         with:
           title: Update https://html-now.github.io/
           commit-message: Update https://html-now.github.io/
